@@ -1,0 +1,233 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  background-color: rgb(39, 38, 38);
+  min-height: 100vh;
+  color: aqua;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.todoContainer {
+  width: 50vw;
+  margin: 20px 0;
+  max-height: 85vh;
+  overflow: auto;
+  padding: 0 10px;
+}
+
+.todoCard {
+  border: 0.5px solid rgb(0, 255, 208);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todoCardControlerPanel {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.todoCard.isDone {
+  color: rgb(105, 105, 105);
+  text-decoration: line-through;
+}
+
+.addTodoFloating {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  font-size: 30px;
+  color: rgb(45, 198, 61);
+  font-weight: bold;
+  background-color: rgb(18, 61, 52);
+  border: 0.5px solid rgb(45, 198, 61);
+  border-radius: 50%;
+  padding: 5px 12px;
+}
+
+.addTodoFloating:hover {
+  cursor: cell;
+}
+
+.addNewTodoBtn {
+  color: rgb(45, 198, 61);
+  background-color: rgb(18, 61, 52);
+  border: 0.5px solid rgb(45, 198, 61);
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 5px 12px;
+}
+
+.addNewTodoBtn:hover {
+  cursor: pointer;
+}
+
+.updateTodoBtn {
+  color: rgb(32, 203, 255);
+  background-color: rgb(18, 3, 118);
+  border: 0.5px solid rgb(32, 203, 255);
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 5px 12px;
+}
+
+.todoRemoveBtn {
+  height: 20px;
+  background-color: rgb(118, 3, 3);
+  color: red;
+  border: 0.5px solid red;
+  border-radius: 3px;
+}
+
+.todoRemoveBtn:hover {
+  cursor: pointer;
+}
+
+.todoUpdateBtn {
+  height: 20px;
+  background-color: rgb(18, 3, 118);
+  color: rgb(32, 203, 255);
+  border: 0.5px solid rgb(32, 203, 255);
+  border-radius: 3px;
+}
+
+.todoUpdateBtn:hover {
+  cursor: pointer;
+}
+
+.todoUpdateBtn:disabled {
+  background-color: rgb(58, 58, 58);
+  color: rgb(182, 182, 182);
+  border-color: rgb(182, 182, 182);
+}
+
+.todoUpdateBtn:disabled:hover {
+  cursor: no-drop;
+}
+
+.todoCheckbox {
+  width: 20px;
+  height: 20px;
+  accent-color: rgb(45, 198, 61);
+}
+
+.todoCheckbox:hover {
+  cursor: pointer;
+}
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: none;
+}
+
+.popupOverlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popupContent {
+  background-color: #4d4d4d;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+  position: relative;
+  width: 50vw;
+  transform: translateY(-20px);
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+  opacity: 0;
+}
+
+.popupContent h2 {
+  margin-top: 0;
+}
+
+.popupOverlay.show .popupContent {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.popupHeader {
+  text-align: center;
+}
+
+.popupBtnPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.popupCloseBtn {
+  color: red;
+  font-weight: bold;
+  background-color: rgb(118, 3, 3);
+  border: 0.5px solid red;
+  border-radius: 5px;
+  padding: 5px 12px;
+  margin-left: 5px;
+}
+
+.popupBody p {
+  margin-bottom: 10px;
+}
+
+.todoText {
+  width: -webkit-fill-available;
+  background-color: #e9e9e9;
+  padding: 5px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 0;
+}
+
+.todoText:focus-visible {
+  outline: 0.5px solid rgb(0, 255, 208);
+}
+
+.todoText.notValid {
+  border: 0.5px solid red;
+}
+
+.todoText.notValid:focus-visible {
+  outline: 0.5px solid red;
+}
+
+.emptyPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+}
+
+.validationText {
+  color: #eb6565;
+  margin: 3px;
+  font-style: italic;
+  font-size: 13px;
+  font-weight: bold;
+}
