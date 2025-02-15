@@ -34,6 +34,14 @@ const App = () => {
     setTodoList((prevList) => [...prevList, newTodo]);
   };
 
+  const updateTodo = (updatedTodo) => {
+    setTodoList(
+      todoList.map((todo) =>
+        todo.id === updatedTodo.id ? { ...todo, name: updatedTodo.name } : todo
+      )
+    );
+  };
+
   const handleUpdateTodo = (todo) => {
     setUpdateData(todo);
     handleShowPopup();
@@ -76,6 +84,7 @@ const App = () => {
           handleHidePopup={handleHidePopup}
           addNewTodo={addNewTodo}
           updateData={updateData}
+          updateTodo={updateTodo}
         />
       )}
     </div>

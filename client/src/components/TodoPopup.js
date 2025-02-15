@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-const TodoPopup = ({ showPopup, handleHidePopup, addNewTodo, updateData }) => {
+const TodoPopup = ({
+  showPopup,
+  handleHidePopup,
+  addNewTodo,
+  updateData,
+  updateTodo,
+}) => {
   const [title, setTitle] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [isKeepAdding, setIsKeepAdding] = useState(false);
@@ -15,6 +21,21 @@ const TodoPopup = ({ showPopup, handleHidePopup, addNewTodo, updateData }) => {
       if (!isKeepAdding) {
         handleHidePopup();
       }
+    }
+  };
+
+  const handleUpdateTodo = () => {
+    if (title.trim() === "") {
+      setIsValid(false);
+    } else {
+      updateTodo({
+        id: updateData.id,
+        name: title,
+        isDone: updateData.isDone,
+      });
+      setTitle("");
+      setIsValid(true);
+      handleHidePopup();
     }
   };
 
@@ -73,7 +94,7 @@ const TodoPopup = ({ showPopup, handleHidePopup, addNewTodo, updateData }) => {
                 Add
               </button>
             ) : (
-              <button onClick={handleAddTodo} className="updateTodoBtn">
+              <button onClick={handleUpdateTodo} className="updateTodoBtn">
                 Update
               </button>
             )}
